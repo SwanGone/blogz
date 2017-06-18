@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if tasks|length == 0 %}
+    <p>No posts pending</p>
+    {% else %}
+    <h1>POSTED</h1>
+        {% for task in tasks %}
+        <a href='/post?task-id={{task.id}}' method='GET'><h3>{{task.name}}</h3></a>
+        <p>{{task.blogbody}}</p>
+        ___________________________________________________
+        {% endfor %}
+    {% endif %}
+{% endblock %}

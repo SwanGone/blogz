@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Add a new post!</h1>
+    <form method='post' action='/'>
+        <label>
+           <div>
+                New Post:
+                <input type="text" name='task' />
+            </div>
+            <div>
+                <textarea name="body"></textarea>
+            </div>
+        </label>
+        <input type="submit" value='Add Post!' />
+    </form>
+    <p>{{ error }}</p>
+{% endblock %}
