@@ -37,8 +37,11 @@ class User(db.Model):
 
 @app.route("/logout", methods=['POST'])
 def logout():
-    del session['username']
-    return redirect("/login")
+    if 'username' not in session:
+        return redirect("/login")
+    else:
+        del session['username']
+        return redirect("/login")
 
 
 @app.before_request
