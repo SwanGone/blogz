@@ -2,12 +2,19 @@
 
 {% block content %}
     {% if tasks|length == 0 %}
-    <p>No posts pending</p>
+    <p>No posts</p>
     {% else %}
     <h1>POSTED</h1>
         {% for task in tasks %}
-        <a href='/post?task-id={{task.id}}' method='GET'><h3>{{task.name}}</h3></a>
+        <a href='/post?task-id={{task.id}}' method='GET'><h2>{{task.name}}</h2></a>
         <p>{{task.blogbody}}</p>
+        <p><i><sub>Written by
+                {% for author in authors %}
+                    {% if author.id == task.owner_id %}
+                        <a href='/blog?user-id={{author.id}}'>{{author.username}}</a>
+                    {% endif %}
+                {% endfor %}
+            </sub></i></p> 
         ___________________________________________________
         {% endfor %}
     {% endif %}

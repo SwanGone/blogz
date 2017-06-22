@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if names|length == 0 %}
+    <p>No authors yet</p>
+    {% else %}
+    <h1>Authors</h1>
+        {% for name in names %}
+        <h2><a href='/blog?user-id={{name.id}}'>{{name.username}}</a></h2>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

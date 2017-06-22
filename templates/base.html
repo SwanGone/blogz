@@ -2,12 +2,30 @@
 <html>
     <head>
         <title>{{title}}</title>
+        <style>
+            .error {
+                color: red;
+            }
+            .success {
+                color: green;
+            }
+        </style>
     </head>
 <body>
     <nav>
-        <a href="/blog">BLOGGO</a>|
+        <a href="/blog">BLOGZ!</a>|
         <a href="/newpost">Make a new post</a>
+        <form action="/logout" method="post" id='logout'>
+              <input type="submit" value="Log Out" />
+        </form>
     </nav>
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        <ul>
+            {% for category,message in messages %}
+                <li class="{{category}}">{{message}}</li>
+            {% endfor %}
+        </ul>
+    {% endwith %}
 
     {% block content %}
     {% endblock %}
